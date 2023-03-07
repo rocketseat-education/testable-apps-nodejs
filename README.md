@@ -36,6 +36,7 @@ PGPORT=5432
 
 ## Branches
 
-- `main`: Código base sem utilização de nenhum pattern para melhorar a experiência de testes;
+- `main`: Código finalizado!
+- `base`: Código base sem utilização de nenhum pattern para melhorar a experiência de testes;
 - `mocking`: Código que utiliza o pattern de repository para operações no banco com mocking;
 - `in-memory`: Código que utiliza o pattern de in-memory databases para suprir o uso de mocking;
