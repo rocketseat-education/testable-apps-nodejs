@@ -5,7 +5,8 @@
   "main": "src/server.js",
   "scripts": {
     "start:dev": "node --watch --no-warnings src/server.js",
-    "test": "node --test --watch --test-reporter spec src/create-order.test.js"
+    "test": "node --test --test-reporter spec src/create-order.test.js",
+    "test:watch": "node --test --watch --test-reporter spec src/create-order.test.js"
   },
   "license": "MIT",
   "dependencies": {
