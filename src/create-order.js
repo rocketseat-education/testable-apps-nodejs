@@ -2,36 +2,44 @@ import { randomUUID } from 'node:crypto'
 
 import { transport } from './mail/transport.js'
 
-export async function createOrder(data, ordersRepository) {
-  const { customerId, amount } = data
+export class CreateOrder {
+  ordersRepository = null;
 
-  const orderId = randomUUID()
-  const isPriority = amount > 3000
+  constructor(ordersRepository) {
+    this.ordersRepository = ordersRepository
+  }
 
-  const order = await ordersRepository.create({
-    id: orderId,
-    customerId,
-    priority: isPriority,
-    amount,
-  })
+  async handle(data) {
+    const { customerId, amount } = data
 
-  const amountFormatted = new Intl.NumberFormat("en-US", { 
-    style: "currency", 
-    currency: "USD" }
-  ).format(amount)
+    const orderId = randomUUID()
+    const isPriority = amount > 3000
 
-  await transport.sendMail({
-    from: {
-      name: 'Diego Fernandes',
-      address: 'diego@rocketseat.com.br',
-    },
-    to: {
-      name: 'Diego Fernandes',
-      address: 'diego@rocketseat.com.br',
-    },
-    subject: `New order #${order.id}`,
-    html: `<strong>New order:</strong> ${order.id} with amount of ${amountFormatted}`
-  })
+    const order = await this.ordersRepository.create({
+      id: orderId,
+      customerId,
+      priority: isPriority,
+      amount,
+    })
 
-  return order
+    const amountFormatted = new Intl.NumberFormat("en-US", { 
+      style: "currency", 
+      currency: "USD" }
+    ).format(amount)
+
+    await transport.sendMail({
+      from: {
+        name: 'Diego Fernandes',
+        address: 'diego@rocketseat.com.br',
+      },
+      to: {
+        name: 'Diego Fernandes',
+        address: 'diego@rocketseat.com.br',
+      },
+      subject: `New order #${order.id}`,
+      html: `<strong>New order:</strong> ${order.id} with amount of ${amountFormatted}`
+    })
+
+    return order
+  }
 }
