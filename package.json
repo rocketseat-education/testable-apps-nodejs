@@ -1,0 +1,16 @@
+{
+  "name": "nodejs-tests-patterns",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "scripts": {
+    "start:dev": "node --watch --no-warnings src/server.js",
+    "test": "node --test --watch src/create-order.test.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "16.0.3",
+    "nodemailer": "6.9.1",
+    "pg": "8.10.0"
+  }
+}
