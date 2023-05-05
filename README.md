@@ -40,3 +40,15 @@ PGPORT=5432
 - `base`: Código base sem utilização de nenhum pattern para melhorar a experiência de testes;
 - `mocking`: Código que utiliza o pattern de repository para operações no banco com mocking;
 - `in-memory`: Código que utiliza o pattern de in-memory databases para suprir o uso de mocking;
+<!--START_SECTION:footer-->
+
+<br />
+<br />
+
+<p align="center">
+  <a href="https://discord.gg/rocketseat" target="_blank">
+    <img align="center" src="https://storage.googleapis.com/golden-wind/comunidade/rodape.svg" alt="banner"/>
+  </a>
+</p>
+
+<!--END_SECTION:footer-->
